@@ -54,6 +54,15 @@
         public virtual ICollection<UserGroup> UserGroups { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+
+
+        public virtual ICollection<GroupMember> GroupMembers { get; set; }
+
+
+        public virtual ICollection<GroupPost> GroupPosts { get; set; }
+
+
+        public virtual ICollection<GroupComment> GroupComments { get; set; }
     }
 
 }

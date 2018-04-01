@@ -21,5 +21,10 @@ namespace PsNetwork.Domain
         public DateTime CreationDate { get; set; }
 
         public virtual User User { get; set; }
+
+        public virtual ICollection<GroupMember> GroupMembers { get; set; }
+
+
+        public virtual ICollection<GroupPost> GroupPosts { get; set; }
     }
 }

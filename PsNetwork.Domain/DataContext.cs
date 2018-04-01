@@ -19,7 +19,12 @@ namespace PsNetwork.Domain
         }
         //public DbSet<User> Users { get; set; }
 
-        //public DbSet<UserType> UserTypes { get; set; }
+
+        public DbSet<GroupComment> GroupComments { get; set; }
+        public DbSet<GroupPost> GroupPosts { get; set; }
+        public System.Data.Entity.DbSet<PsNetwork.Domain.Comment> Comments { get; set; }
+
+        public System.Data.Entity.DbSet<PsNetwork.Domain.GroupMember> GroupMembers { get; set; }
 
         public DbSet<TimeLinePost> TimeLinePosts { get; set; }
 

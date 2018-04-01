@@ -190,6 +190,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GroupMembersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TimeLinePostsController.cs" />
@@ -279,6 +280,15 @@
     <Content Include="Views\UserGroups\Edit.cshtml" />
     <Content Include="Views\UserGroups\Index.cshtml" />
     <Content Include="Views\TimeLinePosts\Comment.cshtml" />
+    <Content Include="Views\GroupMembers\Create.cshtml" />
+    <Content Include="Views\GroupMembers\Delete.cshtml" />
+    <Content Include="Views\GroupMembers\Details.cshtml" />
+    <Content Include="Views\GroupMembers\Edit.cshtml" />
+    <Content Include="Views\GroupMembers\Index.cshtml" />
+    <Content Include="Views\GroupMembers\Join.cshtml" />
+    <Content Include="Views\GroupMembers\Leave.cshtml" />
+    <Content Include="Views\GroupMembers\Post.cshtml" />
+    <Content Include="Views\GroupMembers\CreatePost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

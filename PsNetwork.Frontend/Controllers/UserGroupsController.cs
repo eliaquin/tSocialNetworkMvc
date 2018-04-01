@@ -55,6 +55,14 @@ namespace PsNetwork.Frontend.Controllers
             if (ModelState.IsValid)
             {
                 db.UserGroups.Add(userGroup);
+
+                var groupMember = new GroupMember
+                {
+                    UserId = userGroup.UserId,
+                    UserGroupId = userGroup.UserGroupId
+                };
+                db.GroupMembers.Add(groupMember);
+
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
