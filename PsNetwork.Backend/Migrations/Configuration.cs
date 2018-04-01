@@ -10,7 +10,7 @@ namespace PsNetwork.Backend.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationDataLossAllowed = false;
         }
 
         protected override void Seed(PsNetwork.Backend.Models.LocalDataContext context)

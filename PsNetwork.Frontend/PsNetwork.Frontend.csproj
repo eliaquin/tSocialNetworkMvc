@@ -192,10 +192,15 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TimeLinePostsController.cs" />
+    <Compile Include="Controllers\UserGroupsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\UsersHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DataContextLocal.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -258,6 +263,22 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\TimeLinePosts\Create.cshtml" />
+    <Content Include="Views\TimeLinePosts\Delete.cshtml" />
+    <Content Include="Views\TimeLinePosts\Details.cshtml" />
+    <Content Include="Views\TimeLinePosts\Edit.cshtml" />
+    <Content Include="Views\TimeLinePosts\Index.cshtml" />
+    <Content Include="Views\UserGroups\Create.cshtml" />
+    <Content Include="Views\UserGroups\Delete.cshtml" />
+    <Content Include="Views\UserGroups\Details.cshtml" />
+    <Content Include="Views\UserGroups\Edit.cshtml" />
+    <Content Include="Views\UserGroups\Index.cshtml" />
+    <Content Include="Views\TimeLinePosts\Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -274,6 +295,12 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PsNetwork.Domain\PsNetwork.Domain.csproj">
+      <Project>{07f71fc4-e8d7-473e-aa93-826c9d44aac5}</Project>
+      <Name>PsNetwork.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -34,18 +34,26 @@
         //[Index("User_Email_Index", IsUnique = true)]
         public string Email { get; set; }
 
+        public string Password { get; set; }
+
         [Display(Name = "Status")]
         public int StatusId { get; set; }
-        
+
         [JsonIgnore]
         public virtual UserType UserType { get; set; }
 
         [JsonIgnore]
         public virtual Status Status { get; set; }
-        
+
+        //[JsonIgnore]
+        //public virtual ICollection<UserRol> UserRols { get; set; }
         [JsonIgnore]
-        public virtual ICollection<UserRol> UserRols { get; set; }
-        
+        public virtual ICollection<TimeLinePost> TimeLinePosts { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<UserGroup> UserGroups { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 
 }

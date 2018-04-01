@@ -1,0 +1,49 @@
+﻿@model IEnumerable<PsNetwork.Domain.TimeLinePost>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+    <div>
+        <span style="font-size:large"> @Html.DisplayFor(modelItem => item.User.FirstName)</span>
+        post on <span style="font-size:small">  @Html.DisplayFor(modelItem => item.PublishDate)</span>
+        <br /> <br />
+        <pre style="color:blue">  @Html.Raw(item.PostStr) </pre>
+
+        @Html.ActionLink("Comment this post", "Comment", new { id = item.TimeLinePostId }) |
+
+        @Html.ActionLink("Edit post", "Edit", new { id = item.TimeLinePostId }) |
+
+        @Html.ActionLink("Delete post", "Delete", new { id = item.TimeLinePostId })
+        <br />  <br />
+        @foreach (var item2 in item.Comments)
+    {
+        <div style="padding-left:20px">
+            <span style="font-size:large"> @Html.DisplayFor(modelItem => item2.User.FirstName)</span>
+            comment on <span style="font-size:small">  @Html.DisplayFor(modelItem => item2.CommentDate)</span>
+
+            <p style="color:black">  @Html.Raw(item2.Commentary) </p>
+
+            @Html.ActionLink("Edit comment", "Edit", new { id = item2.CommentId }) |
+
+            @Html.ActionLink("Delete comment", "Delete", new { id = item2.CommentId })
+           
+        </div>
+
+}
+
+        <hr />
+    </div>
+
+    }
+
+</table>
