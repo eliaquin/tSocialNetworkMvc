@@ -34,7 +34,7 @@
         //[Index("User_Email_Index", IsUnique = true)]
         public string Email { get; set; }
 
-        public string Password { get; set; }
+     //   public string Password { get; set; }
 
         [Display(Name = "Status")]
         public int StatusId { get; set; }

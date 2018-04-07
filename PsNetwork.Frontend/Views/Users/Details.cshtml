@@ -1,66 +1,70 @@
-﻿@model PsNetwork.Domain.User
+﻿@model PsNetwork.Domain.Profile
 
-@{
-    ViewBag.Title = "Details";
-}
+    @{
+        ViewBag.Title = "Details";
+    }
 
-<h2>Details</h2>
+    <h2>Details</h2>
 
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Status.Name)
-        </dt>
+    <div>
+        <h4>User</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            @if (!string.IsNullOrEmpty(Model.Picture))
+            {
+                <img src="@Url.Content(Model.Picture)" alt="Image" />
+            }
+            <dt>
+                @Html.DisplayNameFor(model => model.Status.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Status.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UserType.Name)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.UserType.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.UserType.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.UserType.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Picture)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Picture)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Picture)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Picture)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>

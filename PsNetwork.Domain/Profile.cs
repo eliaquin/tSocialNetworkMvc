@@ -16,5 +16,15 @@ namespace PsNetwork.Domain
         [Display(Name = "Imagen")]
         public HttpPostedFileBase ImageFile { get; set; }
 
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "This field is required")]
+        [StringLength(20, ErrorMessage = "Max length is {0}")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "This field is required")]
+        [Compare("Password", ErrorMessage = "The password and the confirmation must be equals")]
+        [Display(Name = "Password Confirm")]
+        public string PasswordConfirm { get; set; }
     }
 }

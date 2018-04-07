@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using PsNetwork.Domain;
 using PsNetwork.Frontend.Models;
 using Microsoft.AspNet.Identity;
+using PsNetwork.Frontend.Helpers;
 
 namespace PsNetwork.Frontend.Controllers
 {
@@ -14,7 +15,7 @@ namespace PsNetwork.Frontend.Controllers
     {
         private DataContextLocal db = new DataContextLocal();
 
-        
+
 
         // GET: Users/Details/5
         public async Task<ActionResult> Details(int? id)
@@ -32,12 +33,7 @@ namespace PsNetwork.Frontend.Controllers
         }
 
         // GET: Users/Create
-        public ActionResult Create()
-        {
-            ViewBag.StatusId = new SelectList(db.Status, "StatusId", "Name");
-            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "Name");
-            return View();
-        }
+
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
@@ -57,7 +53,6 @@ namespace PsNetwork.Frontend.Controllers
         }
 
 
-
         private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
         {
@@ -70,33 +65,61 @@ namespace PsNetwork.Frontend.Controllers
         }
         private ApplicationSignInManager _signInManager;
 
+        public ActionResult Create()
+        {
+            var userProfile = new Profile { StatusId = 1, UserTypeId = 1,Email="",Password="" };
+            return View(userProfile);
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create( User user)
+        public async Task<ActionResult> Create(Profile profile)
         {
             if (ModelState.IsValid)
             {
 
-                var newuser = new ApplicationUser { UserName = user.Email, Email = user.Email };
-                var result = await UserManager.CreateAsync(newuser, user.Password);
+                var newuser = new ApplicationUser { UserName = profile.Email, Email = profile.Email };
+                var result = await UserManager.CreateAsync(newuser, profile.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(newuser, isPersistent: false, rememberBrowser: false);
-                    
-                   // return RedirectToAction("Index", "Home");
+
+                    // return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
+
+                var pic = string.Empty;
+                const string folder = "~/Content/UsersProfile";
+
+                if (profile.ImageFile != null)
+                {
+                    pic = FilesHelper.UploadPhoto(profile.ImageFile, folder, "");
+                    pic = string.Format("{0}/{1}", folder, pic);
+                }
+
+                var user = new User
+                {
+                    UserId = profile.UserId,
+                    UserTypeId = profile.UserTypeId,
+                    FirstName = profile.FirstName,
+                    LastName = profile.LastName,
+                    Email = profile.Email,
+                    StatusId = profile.StatusId
+                };
+
+
+                user.Picture = pic;
+
                 db.Users.Add(user);
                 await db.SaveChangesAsync();
-              //  return RedirectToAction($"Details/{user.UserId}");
+                //  return RedirectToAction($"Details/{user.UserId}");
 
                 return RedirectToAction("Index", "Home");
             }
 
-            ViewBag.StatusId = new SelectList(db.Status, "StatusId", "Name", user.StatusId);
-            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "Name", user.UserTypeId);
-            return View(user);
+            ViewBag.StatusId = new SelectList(db.Status, "StatusId", "Name", profile.StatusId);
+            ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "Name", profile.UserTypeId);
+            return View(profile);
         }
 
         // GET: Users/Edit/5
@@ -121,7 +144,7 @@ namespace PsNetwork.Frontend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit( User user)
+        public async Task<ActionResult> Edit(User user)
         {
             if (ModelState.IsValid)
             {
@@ -133,7 +156,7 @@ namespace PsNetwork.Frontend.Controllers
             ViewBag.UserTypeId = new SelectList(db.UserTypes, "UserTypeId", "Name", user.UserTypeId);
             return View(user);
         }
-        
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
