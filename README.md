@@ -7,14 +7,23 @@ If you want to see the introduction of a mini-course that I prepared, check this
 # Things than are ready
 
 *Register users.
+
 *Create, Edit, Delete Wall post.
+
 *Create, Edit, Delete comments on post.
+
 *Validate than just the owner can edit or delete their comments or their post.
+
 *Validate than just the owner can delete comments from another on his post.
+
 *Group creation.
+
 *Group post.
+
 *Group comments.
-*Timeline (Wall)
+
+*Timeline (Wall).
+
  
  Please, feel free to pull a Request, and colaborate with it, I promese check all the request, test it, and add it.
  
